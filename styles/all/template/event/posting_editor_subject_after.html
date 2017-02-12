@@ -1,0 +1,47 @@
+<!-- IF SUPPORT_STS -->
+ <dl>
+	<dt><label for="phpbbversion">{L_STS_PHPBBVERSION}</label></dt>
+	<dd><input type="text" name="phpbbversion" size="45" maxlength="10" value="{STS_PHPBBVERSION}" class="inputbox autowidth" /></dd>
+ </dl>
+ <dl>
+	<dt><label for="phpbbtype">{L_STS_PHPBBTYPE}</label></dt>
+	<dd><input type="radio" name="phpbbtype" value="1" checked="checked" /> {L_STS_STANDARD}</dd>
+	<dd><input type="radio" name="phpbbtype" value="2"<!-- IF STS_PHPBBTYPE == 2 --> checked="checked"<!-- ENDIF --> /> {L_STS_PREMOD}</dd>
+	<dd><input type="radio" name="phpbbtype" value="3"<!-- IF STS_PHPBBTYPE == 3 --> checked="checked"<!-- ENDIF --> /> {L_STS_ANDDIST}</dd>
+ </dl>
+ <dl>
+	<dt><label for="phpbbmods">{L_STS_MODS}</label></dt>
+	<dd><input type="radio" name="phpbbmods" value="1"<!-- IF STS_MODS --> checked="checked"<!-- ENDIF --> /> {L_STS_YES}</dd>
+	<dd><input type="radio" name="phpbbmods" value="0"<!-- IF not STS_MODS --> checked="checked"<!-- ENDIF --> /> {L_STS_NO}</dd>
+ </dl>
+ <dl>
+	<dt><label for="phpbbknowledge">{L_STS_KNOWLEDGE}</label></dt>
+	<dd><input type="radio" name="phpbbknowledge" value="1" checked="checked" /> {L_STS_BEGINNER}</dd>
+	<dd><input type="radio" name="phpbbknowledge" value="2"<!-- IF STS_KNOWLEDGE == 2 --> checked="checked"<!-- ENDIF --> /> {L_STS_BASICKNOW}</dd>
+	<dd><input type="radio" name="phpbbknowledge" value="3"<!-- IF STS_KNOWLEDGE == 3 --> checked="checked"<!-- ENDIF --> /> {L_STS_EXTENDED}</dd>
+	<dd><input type="radio" name="phpbbknowledge" value="4"<!-- IF STS_KNOWLEDGE == 4 --> checked="checked"<!-- ENDIF --> /> {L_STS_PROFI}</dd>
+ </dl>
+ <dl>
+	<dt><label for="phpbbdescvf">{L_STS_BEFOREERR}</label></dt>
+	<dd><textarea name="phpbbdescvf" rows="8" cols="50" class="inputbox">{STS_BEFOREERR}</textarea></dd>
+ </dl>
+ <dl>
+	<dt><label for="errselfsolution">{L_STS_SELFSOLUTION}</label></dt>
+	<dd><textarea name="errselfsolution" rows="8" cols="76" class="inputbox">{STS_SELFSOLUTION}</textarea></dd>
+ </dl>
+ <dl>
+	<dt><label for="boardlink">{L_STS_BOARDLINK}</label></dt>
+	<dd><input type="text" name="boardlink" size="45" maxlength="255" value="{STS_BOARDLINK}" class="inputbox autowidth" /></dd>
+ </dl>
+ <dl>
+	<dt><label for="phpversion">{L_STS_PHPVER}</label><br /><span>({L_STS_OPTIONAL})</span></dt>
+	<dd><input type="text" name="phpversion" size="45" maxlength="60" value="{STS_PHPVER}" class="inputbox autowidth" /></dd>
+ </dl>
+ <dl>
+	<dt><label for="mysqlversion">{L_STS_SQLVER}</label><br /><span>({L_STS_OPTIONAL})</span></dt>
+	<dd><input type="text" name="mysqlversion" size="45" maxlength="60" value="{STS_SQLVER}" class="inputbox autowidth" /></dd>
+ </dl>
+ <dl>
+	<dt><label for="message">{L_STS_HEAD_MSG}</label></dt>
+ </dl>
+<!-- ENDIF -->

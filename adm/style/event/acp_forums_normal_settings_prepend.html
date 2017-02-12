@@ -1,0 +1,26 @@
+<!-- INCLUDEJS @dmzx_supportticket/jscolor/jscolor.js -->
+<dl>
+	<dt>
+		<label for="enable_sts">{L_STS_ENABLE}{L_COLON}</label><br />
+	</dt>
+	<dd>
+		<label><input type="radio" class="radio" name="enable_sts" value="1"<!-- IF S_STS_ENABLE --> id="enable_sts" checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+		<label><input type="radio" class="radio" name="enable_sts" value="0"<!-- IF not S_STS_ENABLE --> id="enable_sts" checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+	</dd>
+</dl>
+<dl>
+	<dt>
+		<label for="sts_size">{L_STS_FONT_SIZE}{L_COLON}</label><br /><span>{L_STS_FONT_SIZE_EXPLAIN}</span>
+	</dt>
+	<dd>
+		<input type="number" id="sts_size" name="sts_size" value="{STS_FONT_SIZE}" size="4" maxlength="4" min="100" max="200" />
+	</dd>
+</dl>
+<dl>
+	<dt>
+		<label for="sts_colour">{L_STS_COLOUR}{L_COLON}</label><br /><span>{L_STS_COLOUR_EXPLAIN}</span>
+	</dt>
+	<dd>
+		<input class="text post color {required:false,caps:false}" name="sts_colour" type="text" id="sts_colour" value="{STS_TEMPLATE_COLOUR}" size="6" maxlength="6" />
+	</dd>
+</dl>

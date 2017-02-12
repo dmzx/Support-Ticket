@@ -1,0 +1,9 @@
+services:
+    dmzx.supportticket.listener:
+        class: dmzx\supportticket\event\listener
+        arguments:
+            - '@user'
+            - '@request'
+            - '@template'
+        tags:
+            - { name: event.listener }               

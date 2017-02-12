@@ -1,0 +1,35 @@
+{
+	"name": "dmzx/supportticket",
+	"type": "phpbb-extension",
+	"description": "This Extension adds an Assistant to your phpBB Supportforum.",
+	"homepage": "http://www.dmzx-web.net",
+	"version": "1.0.2",
+	"time": "2017-02-12",
+	"keywords": ["phpbb", "extension", "supportticket"],
+	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "dmzx",
+			"homepage": "http://www.dmzx-web.net",
+			"email": "info@dmzx-web.net",
+			"role": "Extension Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.3.3"
+	},
+	"require-dev": {
+		"phpbb/epv": "dev-master"
+	},
+	"extra": {
+		"display-name": "Support Ticket",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.1.0,<3.3"
+		},
+		"version-check": {
+			"host": "www.dmzx-web.net",
+			"directory": "/versions",
+			"filename": "supportticket_version.json"
+		}
+	}
+}
