@@ -39,7 +39,7 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'STS_SUPPORT_TICKET'			=> 'Supportticket System',
 	'STS_NEW_SUPPORT_TICKET'		=> 'New Support Ticket',
-	'STS_ERRMESSAGE'				=> 'You didn\'t entered a title for your post. Please press the Back Button of your browser to correct this!',
+	'STS_ERRMESSAGE'				=> 'You didn’t entered a title for your post. Please press the Back Button of your browser to correct this!',
 	'STS_PHPBBVERSION'				=> 'Your phpBB Version:',
 	'STS_PHPBBTYPE'					=> 'Your phpBB Type:',
 	'STS_STANDARD'					=> 'Standard phpBB',
