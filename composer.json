@@ -3,9 +3,13 @@
 	"type": "phpbb-extension",
 	"description": "This Extension adds an Assistant to your phpBB Supportforum.",
 	"homepage": "http://www.dmzx-web.net",
-	"version": "1.0.2",
-	"time": "2017-02-12",
-	"keywords": ["phpbb", "extension", "supportticket"],
+	"version": "1.0.3",
+	"time": "2017-05-06",
+	"keywords": [
+		"phpbb",
+		"extension",
+		"supportticket"
+	],
 	"license": "GPL-2.0",
 	"authors": [
 		{

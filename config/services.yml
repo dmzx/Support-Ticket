@@ -5,5 +5,7 @@ services:
             - '@user'
             - '@request'
             - '@template'
+            - '@config'
+            - '@ext.manager'
         tags:
             - { name: event.listener }               

@@ -13,6 +13,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use phpbb\user;
 use phpbb\request\request_interface;
 use phpbb\template\template;
+use phpbb\config\config;
+use phpbb\extension\manager;
 
 /**
 * Event listener
@@ -28,23 +30,35 @@ class listener implements EventSubscriberInterface
 	/** @var template */
 	protected $template;
 
+	/** @var config */
+	protected $config;
+
+	/** @var manager */
+	protected $extension_manager;
+
 	/**
 	* Constructor
 	*
-	* @param user				$user
-	* @param request			$request
-	* @param template			$template
+	* @param user			$user
+	* @param request		$request
+	* @param template		$template
+	* @param config			$config
+	* @param manager 		$extension_manager
 	*
 	*/
 	public function __construct(
 		user $user,
 		request_interface $request,
-		template $template
+		template $template,
+		config $config,
+		manager $extension_manager
 	)
 	{
-		$this->user			= $user;
-		$this->request		= $request;
-		$this->template 	= $template;
+		$this->user					= $user;
+		$this->request				= $request;
+		$this->template 			= $template;
+		$this->config				= $config;
+		$this->extension_manager	= $extension_manager;
 	}
 
 	static public function getSubscribedEvents()
@@ -72,12 +86,12 @@ class listener implements EventSubscriberInterface
 
 	public function posting_modify_message_text($event)
 	{
-		//Get data
 		$post_data = $event['post_data'];
 		$mode = $event['mode'];
 		$message_parser = $event['message_parser'];
+		$subject = $this->request->variable('subject', '', true);
 
-		if ($post_data['enable_sts'] == true && ($mode == 'post'))
+		if ($post_data['enable_sts'] == true && ($mode == 'post') && ($subject != ''))
 		{
 			$phpbbversion 			= $this->request->variable('phpbbversion', '', true );
 			$phpbbtype 				= $this->request->variable('phpbbtype', 0);
@@ -184,6 +198,9 @@ class listener implements EventSubscriberInterface
 		$page_data['STS_PHPVER']		= $this->request->variable('phpversion', '');
 
 		$event['page_data'] = $page_data;
+
+		$this->assign_authors();
+		$this->template->assign_var('STS_FOOTER_VIEW', true);
 	}
 
 	// Submit form (add/update)
@@ -218,6 +235,8 @@ class listener implements EventSubscriberInterface
 	// ACP forums template output
 	public function acp_manage_forums_display_form($event)
 	{
+		$this->user->add_lang_ext('dmzx/supportticket', 'acp_supportticket');
+
 		$template_data = $event['template_data'];
 		$forum_data = $event['forum_data'];
 
@@ -230,18 +249,31 @@ class listener implements EventSubscriberInterface
 		$event['template_data'] = $template_data;
 	}
 
-	/**
-	* Add the forum template
-	*
-	* @param object $event The event object
-	* @return null
-	* @access public
-	*/
 	public function viewforum_get_topic_data($event)
 	{
 		if ($event['forum_data']['enable_sts'] ? true : false)
 		{
 			$this->template->assign_var('L_BUTTON_NEW_TOPIC', $this->user->lang['STS_NEW_SUPPORT_TICKET']);
 		}
+	}
+
+	private function assign_authors()
+	{
+		$md_manager = $this->extension_manager->create_extension_metadata_manager('dmzx/supportticket', $this->template);
+		$meta = $md_manager->get_metadata();
+		$author_names = array();
+		$author_homepages = array();
+
+		foreach (array_slice($meta['authors'], 0, 1) as $author)
+		{
+			$author_names[] = $author['name'];
+			$author_homepages[] = sprintf('<a href="%1$s" title="%2$s">%2$s</a>', $author['homepage'], $author['name']);
+		}
+		$this->template->assign_vars(array(
+			'STS_DISPLAY_NAME'		=> $meta['extra']['display-name'],
+			'STS_AUTHOR_NAMES'		=> implode(' &amp; ', $author_names),
+			'STS_AUTHOR_HOMEPAGES'	=> implode(' &amp; ', $author_homepages),
+			'STS_VERSION'			=> $this->config['supportticket_version'],
+		));
 	}
 }

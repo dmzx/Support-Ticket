@@ -37,9 +37,7 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'STS_SUPPORT_TICKET'			=> 'Supportticket System',
 	'STS_NEW_SUPPORT_TICKET'		=> 'New Support Ticket',
-	'STS_ERRMESSAGE'				=> 'You didn’t entered a title for your post. Please press the Back Button of your browser to correct this!',
 	'STS_PHPBBVERSION'				=> 'Your phpBB Version:',
 	'STS_PHPBBTYPE'					=> 'Your phpBB Type:',
 	'STS_STANDARD'					=> 'Standard phpBB',
@@ -62,4 +60,5 @@ $lang = array_merge($lang, array(
 	'STS_HEAD_MSG'					=> 'Description and Message',
 	'STS_OPTIONAL'					=> 'not required',
 	'STS_HEAD'						=> 'This Assistant helps you to give the supporters enough Information to help you. Please fill out as many fields you can. Only with these informations its possible to help you efficient and fast!',
+	'STS_VERSION'					=> 'Version',
 ));
